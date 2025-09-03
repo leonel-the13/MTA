@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapa Interativo - Turismo Acessível</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      }
+      #map {
+        height: 60vh;
+        width: 100%;
+      }
+      .filter-btn {
+        transition: all 0.3s ease;
+      }
+      .filter-btn:hover {
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 font-sans">
+    <!-- Navbar -->
+    <nav class="gradient-bg text-white shadow-lg">
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center space-x-2">
+          <i data-feather="map" class="w-8 h-8"></i>
+          <span class="text-xl font-bold">Turismo Acessível</span>
+        </div>
+        <div class="hidden md:flex space-x-6">
+          <a href="index.html" class="hover:text-blue-200 transition">Início</a>
+          <a href="#" class="text-blue-200 font-semibold">Mapa</a>
+          <a href="destinos.html" class="hover:text-blue-200 transition"
+            >Destinos</a
+          >
+          <a href="sobre.html" class="hover:text-blue-200 transition"
+            >Sobre Nós</a
+          >
+          <a href="contato.html" class="hover:text-blue-200 transition"
+            >Contato</a
+          >
+        </div>
+        <button class="md:hidden" id="menu-btn">
+          <i data-feather="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Map Search Section -->
+    <section class="pt-10 pb-6 bg-white">
+      <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-6 text-center">
+          Mapa de Acessibilidade
+        </h1>
+        <!-- Search Bar -->
+        <div class="max-w-3xl mx-auto mb-8" data-aos="fade-up">
+          <div class="relative">
+            <input
+              type="text"
+              id="search-input"
+              class="w-full border border-gray-300 rounded-lg py-3 px-4 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Buscar cidade, atração ou endereço..."
+            />
+            <span
+              class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+            >
+              <i data-feather="search"></i>
+            </span>
+          </div>
+        </div>
+        <!-- Map Container -->
+        <div id="map" class="rounded-lg shadow-lg mb-8"></div>
+        <!-- Filters -->
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <button
+            class="filter-btn bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700"
+            data-filter="all"
+          >
+            Todos
+          </button>
+          <button
+            class="filter-btn bg-gray-200 text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100"
+            data-filter="acessibilidade"
+          >
+            Acessível
+          </button>
+          <button
+            class="filter-btn bg-gray-200 text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100"
+            data-filter="parcial"
+          >
+            Parcial
+          </button>
+          <button
+            class="filter-btn bg-gray-200 text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100"
+            data-filter="nao"
+          >
+            Não Acessível
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- ...restante do HTML do mapa... -->
+  </body>
+</html>

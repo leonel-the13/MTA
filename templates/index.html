@@ -1,17 +1,565 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mapa de Turismo Acessível</title>
-    <link rel="stylesheet" href="/static/styles/style.css" />
-    <script src="/static/scripts/main.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      }
+      .accessible-icon {
+        transition: all 0.3s ease;
+      }
+      .accessible-icon:hover {
+        transform: scale(1.1);
+      }
+    </style>
   </head>
-  <body>
-    <h1>Mapa de Turismo Acessível</h1>
-    <table id="tabela-atracoes">
-      <thead></thead>
-      <tbody></tbody>
-    </table>
-    <script src="/static/scripts/tabelaAtracoes.js"></script>
+  <body class="bg-gray-50 font-sans">
+    <!-- Navbar -->
+    <nav class="gradient-bg text-white shadow-lg">
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center space-x-2">
+          <i data-feather="map" class="w-8 h-8"></i>
+          <span class="text-xl font-bold">Turismo Acessível</span>
+        </div>
+        <div class="hidden md:flex space-x-6">
+          <a href="#" class="hover:text-blue-200 transition">Início</a>
+          <a href="mapa.html" class="hover:text-blue-200 transition">Mapa</a>
+          <a href="destinos.html" class="hover:text-blue-200 transition"
+            >Destinos</a
+          >
+          <a href="sobre.html" class="hover:text-blue-200 transition"
+            >Sobre Nós</a
+          >
+          <a href="contato.html" class="hover:text-blue-200 transition"
+            >Contato</a
+          >
+        </div>
+        <button class="md:hidden" id="menu-btn">
+          <i data-feather="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div class="md:hidden hidden px-4 pb-4" id="mobile-menu">
+        <a href="#" class="block py-2 hover:text-blue-200">Início</a>
+        <a href="mapa.html" class="block py-2 hover:text-blue-200">Mapa</a>
+        <a href="destinos.html" class="block py-2 hover:text-blue-200"
+          >Destinos</a
+        >
+        <a href="sobre.html" class="block py-2 hover:text-blue-200"
+          >Sobre Nós</a
+        >
+        <a href="contato.html" class="block py-2 hover:text-blue-200"
+          >Contato</a
+        >
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+      <div
+        class="container mx-auto px-4 flex flex-col md:flex-row items-center"
+      >
+        <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">
+            Turismo para Todos
+          </h1>
+          <p class="text-xl mb-8">
+            Encontre destinos, hospedagens e atrações acessíveis em todo o país.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+          >
+            <a
+              href="mapa.html"
+              class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 text-center"
+            >
+              Explorar Mapa
+            </a>
+            <a
+              href="#como-funciona"
+              class="bg-transparent border-2 border-white px-6 py-3 rounded-lg hover:bg-white hover:text-blue-600 transition duration-300 text-center"
+            >
+              Saiba Mais
+            </a>
+          </div>
+        </div>
+        <div class="md:w-1/2" data-aos="fade-left">
+          <img
+            src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            alt="Pessoa em cadeira de rodas visitando local turístico"
+            class="rounded-lg shadow-2xl w-full"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessibility Features -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">
+          Nossos Diferenciais
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="bg-gray-50 p-6 rounded-lg shadow-md text-center"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="bg-blue-100 inline-flex p-4 rounded-full mb-4">
+              <i
+                data-feather="wheelchair"
+                class="w-8 h-8 text-blue-600 accessible-icon"
+              ></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Mobilidade Reduzida</h3>
+            <p class="text-gray-600">
+              Locais com rampas, elevadores e banheiros adaptados.
+            </p>
+          </div>
+          <div
+            class="bg-gray-50 p-6 rounded-lg shadow-md text-center"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="bg-blue-100 inline-flex p-4 rounded-full mb-4">
+              <i
+                data-feather="eye"
+                class="w-8 h-8 text-blue-600 accessible-icon"
+              ></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Deficiência Visual</h3>
+            <p class="text-gray-600">
+              Sinalização em braille e audiodescrição disponível.
+            </p>
+          </div>
+          <div
+            class="bg-gray-50 p-6 rounded-lg shadow-md text-center"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="bg-blue-100 inline-flex p-4 rounded-full mb-4">
+              <i
+                data-feather="ear"
+                class="w-8 h-8 text-blue-600 accessible-icon"
+              ></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Deficiência Auditiva</h3>
+            <p class="text-gray-600">
+              Intérpretes de Libras e legendas nos materiais.
+            </p>
+          </div>
+          <div
+            class="bg-gray-50 p-6 rounded-lg shadow-md text-center"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div class="bg-blue-100 inline-flex p-4 rounded-full mb-4">
+              <i
+                data-feather="heart"
+                class="w-8 h-8 text-blue-600 accessible-icon"
+              ></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Necessidades Especiais</h3>
+            <p class="text-gray-600">
+              Espaços adaptados para diversas condições.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="como-funciona" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">
+          Como Funciona
+        </h2>
+        <div
+          class="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8"
+        >
+          <div class="md:w-1/2" data-aos="fade-right">
+            <img
+              src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+              alt="Pessoa usando smartphone para navegação"
+              class="rounded-lg shadow-md w-full"
+            />
+          </div>
+          <div
+            class="md:w-1/2 flex flex-col justify-center"
+            data-aos="fade-left"
+          >
+            <div class="mb-8">
+              <div class="flex items-start mb-4">
+                <div
+                  class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4"
+                >
+                  1
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">
+                    Busque por Localidade
+                  </h3>
+                  <p class="text-gray-600">
+                    Encontre atrações, hospedagens e restaurantes acessíveis em
+                    qualquer cidade.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="mb-8">
+              <div class="flex items-start mb-4">
+                <div
+                  class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4"
+                >
+                  2
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">
+                    Filtre por Acessibilidade
+                  </h3>
+                  <p class="text-gray-600">
+                    Selecione os critérios que atendam às suas necessidades
+                    específicas.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-start mb-4">
+                <div
+                  class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4"
+                >
+                  3
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">Planeje Sua Viagem</h3>
+                  <p class="text-gray-600">
+                    Veja avaliações, fotos e detalhes para garantir uma
+                    experiência sem barreiras.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">
+          Destinos Populares
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="relative overflow-hidden rounded-lg shadow-lg group"
+            data-aos="fade-up"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+              alt="Rio de Janeiro"
+              class="w-full h-64 object-cover transition duration-500 group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
+            ></div>
+            <div class="absolute bottom-0 left-0 p-6">
+              <h3 class="text-white text-xl font-bold mb-2">Rio de Janeiro</h3>
+              <div class="flex space-x-2">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >Passeios</span
+                >
+                <span
+                  class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded"
+                  >Acessível</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="relative overflow-hidden rounded-lg shadow-lg group"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+              alt="São Paulo"
+              class="w-full h-64 object-cover transition duration-500 group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
+            ></div>
+            <div class="absolute bottom-0 left-0 p-6">
+              <h3 class="text-white text-xl font-bold mb-2">São Paulo</h3>
+              <div class="flex space-x-2">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >Cultura</span
+                >
+                <span
+                  class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded"
+                  >Acessível</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="relative overflow-hidden rounded-lg shadow-lg group"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1573993812046-f6f0bbc0a5d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+              alt="Foz do Iguaçu"
+              class="w-full h-64 object-cover transition duration-500 group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
+            ></div>
+            <div class="absolute bottom-0 left-0 p-6">
+              <h3 class="text-white text-xl font-bold mb-2">Foz do Iguaçu</h3>
+              <div class="flex space-x-2">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >Natureza</span
+                >
+                <span
+                  class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded"
+                  >Acessível</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-10">
+          <a
+            href="destinos.html"
+            class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300"
+          >
+            Ver Todos os Destinos
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 gradient-bg text-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">
+          O Que Dizem Nossos Usuários
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-blue-800/30 p-6 rounded-lg backdrop-blur-sm"
+            data-aos="fade-up"
+          >
+            <i data-feather="star" class="w-6 h-6 text-yellow-300 mb-4"></i>
+            <p class="italic mb-4">
+              "Finalmente posso planejar minhas viagens com segurança, sabendo
+              que os locais realmente atendem às minhas necessidades."
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://randomuser.me/api/portraits/women/32.jpg"
+                alt="Maria"
+                class="w-10 h-10 rounded-full mr-4"
+              />
+              <div>
+                <h4 class="font-semibold">Maria Santos</h4>
+                <p class="text-blue-200">Usuária de cadeira de rodas</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-blue-800/30 p-6 rounded-lg backdrop-blur-sm"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <i data-feather="star" class="w-6 h-6 text-yellow-300 mb-4"></i>
+            <p class="italic mb-4">
+              "Como deficiente visual, sempre tive dificuldade para encontrar
+              locais com recursos adequados. Esse site mudou tudo!"
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://randomuser.me/api/portraits/men/45.jpg"
+                alt="Carlos"
+                class="w-10 h-10 rounded-full mr-4"
+              />
+              <div>
+                <h4 class="font-semibold">Carlos Oliveira</h4>
+                <p class="text-blue-200">Deficiente visual</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-blue-800/30 p-6 rounded-lg backdrop-blur-sm"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <i data-feather="star" class="w-6 h-6 text-yellow-300 mb-4"></i>
+            <p class="italic mb-4">
+              "Levo minha mãe idosa para passear com muito mais tranquilidade
+              desde que descobri esse mapeamento."
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://randomuser.me/api/portraits/women/65.jpg"
+                alt="Ana"
+                class="w-10 h-10 rounded-full mr-4"
+              />
+              <div>
+                <h4 class="font-semibold">Ana Beatriz</h4>
+                <p class="text-blue-200">Familiar de idosa</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-6" data-aos="fade-up">
+          Faça Parte Dessa Iniciativa
+        </h2>
+        <p
+          class="text-xl text-gray-600 max-w-2xl mx-auto mb-8"
+          data-aos="fade-up"
+        >
+          Seja um usuário que compartilha experiências ou um estabelecimento que
+          promove acessibilidade.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4"
+        >
+          <a
+            href="#"
+            class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300"
+            data-aos="fade-up"
+          >
+            Avaliar um Local
+          </a>
+          <a
+            href="#"
+            class="bg-gray-100 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition duration-300"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            Cadastrar Estabelecimento
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <i data-feather="map" class="w-6 h-6 text-blue-400"></i>
+              <span class="text-xl font-bold">Turismo Acessível</span>
+            </div>
+            <p class="text-gray-400">
+              Promovendo inclusão e autonomia para todos os viajantes.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Links Úteis</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Termos de Uso</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Política de Privacidade</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Acessibilidade</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Contato</h3>
+            <ul class="space-y-2">
+              <li class="flex items-center text-gray-400">
+                <i data-feather="mail" class="w-4 h-4 mr-2"></i>
+                contato@turismoacessivel.com
+              </li>
+              <li class="flex items-center text-gray-400">
+                <i data-feather="phone" class="w-4 h-4 mr-2"></i> (11)
+                98765-4321
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Redes Sociais</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i data-feather="facebook" class="w-5 h-5"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i data-feather="instagram" class="w-5 h-5"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i data-feather="twitter" class="w-5 h-5"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i data-feather="youtube" class="w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>© 2023 Turismo Acessível. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("menu-btn")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu");
+          if (menu.classList.contains("hidden")) {
+            menu.classList.remove("hidden");
+            feather.replace();
+          } else {
+            menu.classList.add("hidden");
+          }
+        });
+
+      // Initialize AOS animation library
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+      });
+
+      // Replace all feather icons
+      feather.replace();
+    </script>
   </body>
 </html>
