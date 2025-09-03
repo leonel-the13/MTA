@@ -58,7 +58,19 @@ turismo-acessivel/
 ├── src/                 # Código-fonte Python
 │   ├── limpeza.py
 │   ├── visualizacao.py
-│   └── mapa.py
+│   ├── mapa.py
+│   └── app.py           # Backend Flask básico
+│
+├── templates/           # Frontend HTML (Flask)
+│   ├── index.html
+│   └─ pages/           # Outras páginas HTML
+│
+│
+├── static/
+│   ├── styles/          # Arquivos CSS
+│   │   └── style.css
+│   └── scripts/         # Arquivos JS
+│       └── main.js
 │
 ├── notebooks/           # Jupyter Notebooks para exploração
 │   └── exploracao.ipynb
@@ -119,8 +131,38 @@ flowchart TD
    make mapa
    ```
 
-5. **(Opcional) Rode notebooks no VSCode:**
+5. **Rodar o backend Flask:**
+
+   ```sh
+   make run
+   ```
+
+   Depois, acesse http://127.0.0.1:5000 no navegador para ver a interface simples.
+
+6. **(Opcional) Rode notebooks no VSCode:**
    - Abra o arquivo `.ipynb` e execute as células.
+
+---
+
+## Tecnologias Sugeridas para Desenvolvimento Básico
+
+**Backend:**
+
+- [Flask](https://flask.palletsprojects.com/) — Framework web Python super simples, fácil de rodar e aprender.
+- pandas — Para ler e tratar os dados.
+
+**Frontend:**
+
+- HTML básico com Jinja2 (templates do Flask).
+- CSS simples (opcional, já incluso no exemplo).
+
+**Extra:**
+
+- Jupyter Notebook para exploração e análise.
+
+Essas tecnologias são leves, fáceis de instalar e permitem terminar o projeto rapidamente.
+
+Se quiser evoluir depois, pode usar Streamlit, Dash ou bibliotecas JS, mas para o hackathon Flask + HTML já resolve!
 
 ---
 

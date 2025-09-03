@@ -11,3 +11,6 @@ mapa:
 	python src/mapa.py
 
 all: limpeza visualizacao mapa
+
+run:
+	python src/app.py

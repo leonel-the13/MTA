@@ -1,0 +1,6 @@
+id_reserva,id_visitante,atracao,data_reserva,confirmada
+101,1,Fortaleza de São Miguel,2025-09-01,Sim
+102,2,Ilha do Mussulo,2025-09-02,Sim
+103,3,Parque Nacional da Kissama,2025-09-03,Não
+104,4,Museu Nacional de Antropologia,2025-09-01,Sim
+105,5,Miradouro da Lua,2025-09-04,Sim
