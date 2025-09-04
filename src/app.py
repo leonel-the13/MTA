@@ -1,10 +1,15 @@
 import logging
 import sys
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, send_from_directory
+import pathlib
 import os
 
 from db_simulado import get_atracoes, get_visitantes, get_reservas
 from mapa import mapa_bp
+DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
+
+
+
 # Configuração de logging colorido
 class AnsiColor:
     CYAN = '\033[96m'
@@ -24,6 +29,14 @@ app = Flask(
     template_folder=os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'templates')),
     static_folder=os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'static'))
 )
+
+DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
+
+
+# Rota para servir arquivos da pasta data (gráficos, csvs, etc)
+@app.route('/data/<path:filename>')
+def data_files(filename):
+    return send_from_directory(DATA_DIR, filename)
 
 @app.route('/')
 def index():
@@ -48,13 +61,9 @@ def contato():
 def api_atracoes():
     logging.info(f'{AnsiColor.CYAN}API /api/atracoes chamada{AnsiColor.RESET}')
     dados = get_atracoes()
-    # Renomear colunas para frontend (mantendo apenas dados reais do CSV)
-    dados = dados.rename(columns={
-        'nome': 'nome',
-        'latitude': 'latitude',
-        'longitude': 'longitude',
-        'acessivel': 'acessibilidade'
-    })
+    # Seleciona apenas as colunas relevantes e remove duplicatas
+    colunas = ['nome', 'latitude', 'longitude']
+    dados = dados[colunas].drop_duplicates()
     logging.info(f'{AnsiColor.GREEN}API retornou {len(dados)} atrações{AnsiColor.RESET}')
     return jsonify(dados.to_dict(orient="records"))
 

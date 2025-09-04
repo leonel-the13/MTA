@@ -1,103 +1,110 @@
-## Testes Automatizados
-
-O projeto possui testes automatizados para backend, scripts de dados e visualização.
-
-Para rodar todos os testes:
-
-```bash
-make test
-```
-
-Os testes cobrem:
-
-- Backend Flask (rotas principais)
-- Banco simulado (db_simulado)
-- Limpeza de dados (src/limpeza.py)
-- Visualização/gráficos (src/visualizacao.py)
-- Geração de mapa (src/mapa.py)
-
 # Mapa de Turismo Acessível
 
 ## Descrição do Projeto
 
-O **Mapa de Turismo Acessível** é uma solução inovadora que mapeia atrações e estabelecimentos turísticos com acessibilidade, facilitando o planejamento de viagens para pessoas com deficiência e promovendo o turismo sustentável e inclusivo.
+O **Mapa de Turismo Acessível** é uma solução web que mapeia atrações e estabelecimentos turísticos acessíveis em Angola, facilitando o planejamento de viagens para pessoas com deficiência e promovendo o turismo sustentável e inclusivo.
 
-## Divisão de Tarefas — Papéis e Especialistas
+## Funcionalidades
 
-Os papéis podem ser acumulados por uma mesma pessoa, conforme a afinidade e interesse do grupo:
+- Visualização de atrações acessíveis em mapa interativo (Folium)
+- Filtros dinâmicos por tipo e acessibilidade
+- Busca com autocomplete e centralização do mapa
+- KPIs dinâmicos de turismo acessível
+- Interface web responsiva com navegação unificada
+- Backend robusto com Flask e API para dados
+- Testes automatizados para backend, scripts e visualizações
 
-### 1. Líder de Projeto / Documentação
-
-- Organizar tarefas, prazos e reuniões.
-- Garantir que a documentação esteja clara e atualizada.
-- Auxiliar na configuração do ambiente e versionamento (Git).
-- Arquivos: `README.md`, `Makefile`, `.gitignore`, `requirements.txt`.
-
-### 2. Especialista em Dados & KPIs
-
-- Importar, limpar e tratar os dados (CSV).
-- Definir e calcular KPIs de turismo sustentável.
-- Ferramentas: pandas.
-- Scripts: `src/limpeza.py`, análise em `notebooks/exploracao.ipynb`.
-
-### 3. Especialista em Visualização
-
-- Criar gráficos, dashboards e mapas de acessibilidade.
-- Trabalhar com matplotlib, seaborn e folium.
-- Integrar visualizações ao storytelling.
-- Scripts: `src/visualizacao.py`.
-
-### 4. Especialista em Desenvolvimento de Mapas
-
-- Implementar o mapa interativo das atrações acessíveis.
-- Utilizar folium (ou streamlit para web, se desejado).
-- Garantir que o mapa seja fácil de usar e visualmente acessível.
-- Scripts: `src/mapa.py`.
-
-### 5. Storytelling e Apresentação
-
-- Preparar slides, roteiro e visualizações para apresentação final.
-- Garantir clareza, narrativa e impacto na apresentação dos resultados.
-
-> **Dica:** Todos colaboram na apresentação final e podem revisar o trabalho uns dos outros para garantir qualidade e aprendizado coletivo.
-
----
-
-## Estrutura Sugerida do Projeto
+## Estrutura do Projeto
 
 ```
-turismo-acessivel/
-│
-├── data/                # Dados CSV fictícios
-│   ├── atracoes.csv
-│   ├── visitantes.csv
-│   └── reservas.csv
-│
+MTA/
+├── data/                # Dados CSV reais
+│   └── atracoes.csv     # Base de dados principal
 ├── src/                 # Código-fonte Python
-│   ├── limpeza.py
-│   ├── visualizacao.py
-│   ├── mapa.py
-│   └── app.py           # Backend Flask básico
-│
-├── templates/           # Frontend HTML (Flask)
+│   ├── app.py           # Backend Flask
+│   ├── mapa.py          # Geração do mapa e filtros
+│   ├── limpeza.py       # Limpeza e tratamento de dados
+│   ├── visualizacao.py  # Gráficos e KPIs
+│   └── db_simulado.py   # Leitura dos dados
+├── templates/           # HTML (Jinja2)
 │   ├── index.html
-│   └─ pages/           # Outras páginas HTML
-│
-│
-├── static/
-│   ├── styles/          # Arquivos CSS
-│   │   └── style.css
-│   └── scripts/         # Arquivos JS
-│       └── main.js
-│
-├── notebooks/           # Jupyter Notebooks para exploração
-│   └── exploracao.ipynb
-│
-├── requirements.txt     # Dependências do projeto
-├── Makefile             # Automatização de comandos
-├── README.md            # Documentação principal
-└── .gitignore           # Arquivos a serem ignorados pelo Git
+│   └── pages/
+│       └── mapa.html
+├── static/              # CSS e JS
+│   ├── styles/
+│   └── scripts/
+├── requirements.txt     # Dependências
+├── Makefile             # Comandos automatizados
+└── README.md            # Documentação principal
 ```
+
+## Tecnologias e Ferramentas Utilizadas
+
+| Tecnologia/Ferramenta | Uso no Projeto (%) | Descrição                                                            |
+| --------------------- | ------------------ | -------------------------------------------------------------------- |
+| Python                | 100%               | Linguagem principal de backend, scripts e manipulação de dados       |
+| Flask                 | 100%               | Framework web, serve rotas, API e páginas                            |
+| pandas                | 100%               | Manipulação, limpeza e leitura dos dados CSV                         |
+| folium                | 100%               | Geração do mapa interativo                                           |
+| matplotlib            | 50%                | Gráficos e visualizações em scripts e relatórios                     |
+| seaborn               | 20%                | Gráficos estatísticos avançados (opcional)                           |
+| HTML/Jinja2           | 100%               | Templates de todas as páginas                                        |
+| Tailwind CSS          | 100%               | Framework CSS para responsividade e design                           |
+| JavaScript            | 100%               | Filtros, busca/autocomplete, interação com o mapa e navegação mobile |
+| AOS                   | 60%                | Animações de entrada de elementos                                    |
+| Feather Icons         | 60%                | Ícones vetoriais em botões, navbar e filtros                         |
+| Makefile              | 100%               | Automatização de comandos de build, run e test                       |
+
+**Todas as bibliotecas listadas em requirements.txt são utilizadas no projeto.**
+
+## Recomendações Finais
+
+- Caso a navbar não apareça igual em todas as telas, limpe o cache do navegador e recarregue as páginas.
+- Certifique-se de que todos os arquivos HTML carregam os mesmos scripts JS no final do `<body>`.
+- Para dúvidas ou sugestões, abra uma issue no repositório ou entre em contato com a equipe.
+
+## Como Configurar o Projeto
+
+1. **Clone o repositório:**
+   ```sh
+   git clone <url-do-repo>
+   cd MTA
+   ```
+2. **Crie um ambiente virtual:**
+   ```sh
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+3. **Instale as dependências:**
+   ```sh
+   pip install -r requirements.txt
+   ```
+4. **Rode o backend Flask:**
+   ```sh
+   make run
+   ```
+   Depois, acesse http://127.0.0.1:5000 no navegador.
+5. **Rodar os testes:**
+   ```sh
+   make test
+   ```
+
+## Testes Automatizados
+
+O projeto possui testes automatizados para backend, scripts de dados e visualização. Para rodar todos os testes:
+
+```sh
+make test
+```
+
+## Observações sobre a Navbar
+
+- A navbar foi padronizada para ser idêntica em todas as telas, incluindo menu mobile.
+- Caso note diferença visual, limpe o cache do navegador e recarregue as páginas.
+
+## Contato
+
+Dúvidas ou sugestões? Abra uma issue no repositório ou entre em contato com a equipe.
 
 ---
 
