@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapa Interativo - Turismo Acessível</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <!-- Folium map será renderizado pelo backend -->
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      }
+      .folium-map-container {
+        height: 60vh !important;
+        width: 100% !important;
+        min-height: 400px;
+      }
+      .folium-map,
+      .folium-map > div,
+      .folium-map > .leaflet-container {
+        height: 100% !important;
+        min-height: 400px;
+      }
+      .filter-btn {
+        transition: all 0.3s ease;
+      }
+      .filter-btn:hover {
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 font-sans">
+    <!-- Navbar -->
+    <nav class="gradient-bg text-white shadow-lg">
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center space-x-2">
+          <i data-feather="map" class="w-8 h-8"></i>
+          <span class="text-xl font-bold">Turismo Acessível</span>
+        </div>
+        <div class="hidden md:flex space-x-6">
+          <a href="/" class="hover:text-blue-200 transition">Início</a>
+          <a href="/mapa" class="text-blue-200 font-semibold">Mapa</a>
+          <a href="/destinos" class="hover:text-blue-200 transition"
+            >Destinos</a
+          >
+          <a href="/sobre" class="hover:text-blue-200 transition">Sobre Nós</a>
+          <a href="/contato" class="hover:text-blue-200 transition">Contato</a>
+        </div>
+        <button class="md:hidden" id="menu-btn">
+          <i data-feather="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Map Search Section -->
+    <section class="pt-10 pb-6 bg-white">
+      <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-6 text-center">
+          Mapa de Acessibilidade
+        </h1>
+
+        <!-- Search Bar -->
+        <div class="max-w-3xl mx-auto mb-8" data-aos="fade-up">
+          <div class="relative">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Pesquisar cidades, atrações, hotéis..."
+              class="w-full px-6 py-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+            <button
+              id="search-btn"
+              class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition"
+            >
+              <i data-feather="search" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="mb-8" data-aos="fade-up">
+          <h2 class="text-lg font-semibold mb-4 text-gray-700">Filtrar por:</h2>
+          <div class="flex flex-wrap gap-4">
+            <button
+              class="filter-btn bg-blue-600 text-white px-4 py-2 rounded-lg font-medium flex items-center"
+            >
+              <i data-feather="map-pin" class="w-4 h-4 mr-2"></i> Todos
+            </button>
+            <button
+              class="filter-btn bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium flex items-center hover:bg-gray-50"
+            >
+              <i data-feather="home" class="w-4 h-4 mr-2"></i> Hospedagens
+            </button>
+            <button
+              class="filter-btn bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium flex items-center hover:bg-gray-50"
+            >
+              <i data-feather="utensils" class="w-4 h-4 mr-2"></i> Restaurantes
+            </button>
+            <button
+              class="filter-btn bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium flex items-center hover:bg-gray-50"
+            >
+              <i data-feather="landmark" class="w-4 h-4 mr-2"></i> Atrações
+            </button>
+            <button
+              class="filter-btn bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium flex items-center hover:bg-gray-50"
+            >
+              <i data-feather="bus" class="w-4 h-4 mr-2"></i> Transportes
+            </button>
+          </div>
+
+          <h2 class="text-lg font-semibold mt-6 mb-4 text-gray-700">
+            Tipo de Acessibilidade:
+          </h2>
+          <div class="flex flex-wrap gap-4">
+            <button
+              class="filter-btn bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium flex items-center hover:bg-gray-50"
+            >
+              <i data-feather="wheelchair" class="w-4 h-4 mr-2"></i> Mobilidade
+            </button>
+            <button
+              class="filter-btn bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium flex items-center hover:bg-gray-50"
+            >
+              <i data-feather="eye" class="w-4 h-4 mr-2"></i> Visual
+            </button>
+            <button
+              class="filter-btn bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium flex items-center hover:bg-gray-50"
+            >
+              <i data-feather="ear" class="w-4 h-4 mr-2"></i> Auditiva
+            </button>
+            <button
+              class="filter-btn bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium flex items-center hover:bg-gray-50"
+            >
+              <i data-feather="heart" class="w-4 h-4 mr-2"></i> Outras
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Container -->
+    <section class="py-4 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div
+          class="folium-map-container rounded-xl shadow-xl border border-gray-200"
+          data-aos="fade-up"
+        >
+          {{ folium_map|safe }}
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Legend -->
+    <section class="py-8 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="bg-gray-50 p-6 rounded-lg shadow-inner" data-aos="fade-up">
+          <h2 class="text-xl font-semibold mb-4">Legenda do Mapa</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="flex items-center">
+              <div class="w-6 h-6 bg-blue-600 rounded-full mr-3"></div>
+              <span>Hospedagem Acessível</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-6 h-6 bg-green-500 rounded-full mr-3"></div>
+              <span>Restaurante Acessível</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-6 h-6 bg-purple-600 rounded-full mr-3"></div>
+              <span>Atração Turística</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-6 h-6 bg-yellow-500 rounded-full mr-3"></div>
+              <span>Transporte Acessível</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-6 h-6 bg-red-500 rounded-full mr-3"></div>
+              <span>Banheiro Adaptado</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-6 h-6 bg-pink-500 rounded-full mr-3">
+                <i
+                  data-feather="eye"
+                  class="w-4 h-4 text-white mx-auto mt-1"
+                ></i>
+              </div>
+              <span>Recursos Visuais</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-6 h-6 bg-indigo-500 rounded-full mr-3">
+                <i
+                  data-feather="ear"
+                  class="w-4 h-4 text-white mx-auto mt-1"
+                ></i>
+              </div>
+              <span>Recursos Auditivos</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-6 h-6 bg-gray-600 rounded-full mr-3"></div>
+              <span>Em Avaliação</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Places -->
+    <section class="py-12 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-center mb-8">Locais em Destaque</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden"
+            data-aos="fade-up"
+          >
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                alt="Museu do Amanhã"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute top-4 left-4 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded"
+              >
+                ⭐ 4.8/5
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Museu do Amanhã - RJ</h3>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >Cultura</span
+                >
+                <span
+                  class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded"
+                  >Acessível</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4">
+                Museu de ciências com excelente acessibilidade para cadeirantes
+                e recursos para deficientes visuais.
+              </p>
+              <div class="flex space-x-2">
+                <i data-feather="wheelchair" class="w-5 h-5 text-green-600"></i>
+                <i data-feather="eye" class="w-5 h-5 text-green-600"></i>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                alt="Hotel Acessível SP"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute top-4 left-4 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded"
+              >
+                ⭐ 4.5/5
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Hotel Acessível - SP</h3>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >Hospedagem</span
+                >
+                <span
+                  class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded"
+                  >Acessível</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4">
+                Hotel com quartos adaptados, banheiros espaçosos e rampas em
+                todas as áreas comuns.
+              </p>
+              <div class="flex space-x-2">
+                <i data-feather="wheelchair" class="w-5 h-5 text-green-600"></i>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-lg shadow-md overflow-hidden"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                alt="Restaurante Inclusivo"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute top-4 left-4 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded"
+              >
+                ⭐ 4.9/5
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Restaurante Inclusivo - BH</h3>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >Gastronomia</span
+                >
+                <span
+                  class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded"
+                  >Acessível</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4">
+                Cardápio em braille, intérpretes de Libras disponíveis e espaço
+                para cadeirantes.
+              </p>
+              <div class="flex space-x-2">
+                <i data-feather="wheelchair" class="w-5 h-5 text-green-600"></i>
+                <i data-feather="eye" class="w-5 h-5 text-green-600"></i>
+                <i data-feather="ear" class="w-5 h-5 text-green-600"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <i data-feather="map" class="w-6 h-6 text-blue-400"></i>
+              <span class="text-xl font-bold">Turismo Acessível</span>
+            </div>
+            <p class="text-gray-400">
+              Promovendo inclusão e autonomia para todos os viajantes.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Links Úteis</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Termos de Uso</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Política de Privacidade</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Acessibilidade</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Contato</h3>
+            <ul class="space-y-2">
+              <li class="flex items-center text-gray-400">
+                <i data-feather="mail" class="w-4 h-4 mr-2"></i>
+                contato@turismoacessivel.com
+              </li>
+              <li class="flex items-center text-gray-400">
+                <i data-feather="phone" class="w-4 h-4 mr-2"></i> (11)
+                98765-4321
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Redes Sociais</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i data-feather="facebook" class="w-5 h-5"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i data-feather="instagram" class="w-5 h-5"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i data-feather="twitter" class="w-5 h-5"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i data-feather="youtube" class="w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>© 2023 Turismo Acessível. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize Google Map
+      function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: -15.793889, lng: -47.882778 }, // Default to Brasília
+          zoom: 4,
+        });
+
+        // Sample markers (would come from database in real app)
+        const markers = [
+          {
+            position: { lat: -22.911, lng: -43.2054 },
+            title: "Museu do Amanhã - RJ",
+            type: "attraction",
+            icon: "purple",
+          },
+          {
+            position: { lat: -23.5505, lng: -46.6333 },
+            title: "Hotel Acessível - SP",
+            type: "hotel",
+            icon: "blue",
+          },
+          {
+            position: { lat: -19.9227, lng: -43.9451 },
+            title: "Restaurante Inclusivo - BH",
+            type: "restaurant",
+            icon: "green",
+          },
+          {
+            position: { lat: -25.4296, lng: -49.2719 },
+            title: "Parque Barigui - PR",
+            type: "attraction",
+            icon: "purple",
+          },
+          {
+            position: { lat: -3.7315, lng: -38.5027 },
+            title: "Praia Acessível - CE",
+            type: "attraction",
+            icon: "purple",
+          },
+        ];
+
+        // Add markers to map
+        markers.forEach((markerInfo) => {
+          const marker = new google.maps.Marker({
+            position: markerInfo.position,
+            map: map,
+            title: markerInfo.title,
+            icon: `https://maps.google.com/mapfiles/ms/icons/${markerInfo.icon}-dot.png`,
+          });
+
+          // Info window for marker
+          const infoWindow = new google.maps.InfoWindow({
+            content: `<div class="p-2">
+                                <h4 class="font-bold">${markerInfo.title}</h4>
+                                <p class="text-sm">${
+                                  markerInfo.type === "hotel"
+                                    ? "Hospedagem"
+                                    : markerInfo.type === "restaurant"
+                                    ? "Restaurante"
+                                    : "Atração Turística"
+                                }</p>
+                                <div class="mt-2">
+                                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Acessível</span>
+                                </div>
+                            </div>`,
+          });
+
+          marker.addListener("click", () => {
+            infoWindow.open(map, marker);
+          });
+        });
+      }
+
+      // Initialize mobile menu
+      document
+        .getElementById("menu-btn")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu");
+          if (menu.classList.contains("hidden")) {
+            menu.classList.remove("hidden");
+            feather.replace();
+          } else {
+            menu.classList.add("hidden");
+          }
+        });
+
+      // Initialize AOS animation library
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+      });
+
+      // Load the Google Maps API
+      window.initMap = initMap;
+
+      // Replace all feather icons
+      feather.replace();
+    </script>
+  </body>
+</html>

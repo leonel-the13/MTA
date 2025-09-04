@@ -4,7 +4,7 @@ from flask import Flask, render_template, jsonify
 import os
 
 from db_simulado import get_atracoes, get_visitantes, get_reservas
-from mapa_folium import mapa_bp
+from mapa import mapa_bp
 # Configuração de logging colorido
 class AnsiColor:
     CYAN = '\033[96m'
@@ -30,24 +30,19 @@ def index():
     logging.info(f'{AnsiColor.GREEN}Página inicial acessada{AnsiColor.RESET}')
     return render_template('index.html')
 
-from flask import redirect, url_for
-
-@app.route('/mapa')
-def mapa():
-    return redirect(url_for('mapa_bp.mapa_folium'))
 
 @app.route('/sobre')
 def sobre():
     return render_template('pages/sobre.html')
 
-@app.route('/contato')
-def contato():
-    return render_template('pages/contato.html')
-
 @app.route('/destinos')
 def destinos():
     logging.info(f'{AnsiColor.YELLOW}Página de destinos acessada{AnsiColor.RESET}')
     return render_template('pages/destinos.html')
+
+@app.route('/contato')
+def contato():
+    return render_template('pages/contato.html')
 
 @app.route('/api/atracoes')
 def api_atracoes():

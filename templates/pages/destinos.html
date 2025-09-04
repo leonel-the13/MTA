@@ -20,9 +20,9 @@
         transform: scale(1.1);
       }
     </style>
-    <link rel="stylesheet" href="/static/styles/style.css" />
+    <link rel="stylesheet" href="/static/styles/main.css" />
   </head>
-  <body class="bg-gray-50 font-sans min-h-screen">
+  <body class="bg-gray-50 font-sans">
     <!-- Navbar (copiada do index.html) -->
     <nav class="gradient-bg text-white shadow-lg">
       <div
@@ -34,7 +34,7 @@
         </div>
         <div class="hidden md:flex space-x-6">
           <a href="/" class="hover:text-blue-200 transition">Início</a>
-          <a href="/mapa_folium" class="hover:text-blue-200 transition">Mapa</a>
+          <a href="/mapa" class="hover:text-blue-200 transition">Mapa</a>
           <a href="/destinos" class="hover:text-blue-200 transition"
             >Destinos</a
           >
@@ -48,26 +48,15 @@
       <!-- Mobile Menu -->
       <div class="md:hidden hidden px-4 pb-4" id="mobile-menu">
         <a href="/" class="block py-2 hover:text-blue-200">Início</a>
-        <a href="/mapa_folium" class="block py-2 hover:text-blue-200">Mapa</a>
+        <a href="/mapa" class="block py-2 hover:text-blue-200">Mapa</a>
         <a href="/destinos" class="block py-2 hover:text-blue-200">Destinos</a>
         <a href="/sobre" class="block py-2 hover:text-blue-200">Sobre Nós</a>
         <a href="/contato" class="block py-2 hover:text-blue-200">Contato</a>
       </div>
     </nav>
-    <script>
-      document
-        .getElementById("menu-btn")
-        .addEventListener("click", function () {
-          const menu = document.getElementById("mobile-menu");
-          if (menu.classList.contains("hidden")) {
-            menu.classList.remove("hidden");
-            feather.replace();
-          } else {
-            menu.classList.add("hidden");
-          }
-        });
-      feather.replace();
-    </script>
+    <script src="/static/scripts/aos_init.js"></script>
+    <script src="/static/scripts/feather_init.js"></script>
+    <script src="/static/scripts/menu_mobile.js"></script>
     <section class="gradient-bg text-white py-20" data-aos="fade-down">
       <h1
         class="text-4xl md:text-5xl font-bold mb-6 text-center w-full"

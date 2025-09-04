@@ -1,11 +1,16 @@
-nome,latitude,longitude,acessivel
-Miradouro da Lua,-9.42,13.18,True
-Fortaleza de São Miguel,-8.812,13.23,True
-Praia Morena,-12.58,13.41,False
-Cachoeira do Binga,-11.35,15.12,False
-Parque Nacional da Kissama,-9.79,13.05,True
-Baía Azul,-12.66,13.43,True
-Tundavala,-14.9333,13.5667,True
-Pedras Negras de Pungo Andongo,-9.74,15.65,False
-Museu da Escravatura,-8.8369,13.2344,True
-Serra da Leba,-14.95,13.35,True
+nome,latitude,longitude,acessivel,tipo,acessibilidade,cidade,categoria,destaque
+Miradouro da Lua,-9.42,13.18,True,atracao,mobilidade,,,
+Fortaleza de São Miguel,-8.812,13.23,True,atracao,mobilidade,,,
+Praia Morena,-12.58,13.41,False,atracao,,,False
+Cachoeira do Binga,-11.35,15.12,False,atracao,,,False
+Parque Nacional da Kissama,-9.79,13.05,True,atracao,mobilidade,,,
+Baía Azul,-12.66,13.43,True,atracao,mobilidade,,,
+Tundavala,-14.9333,13.5667,True,atracao,mobilidade,,,
+Pedras Negras de Pungo Andongo,-9.74,15.65,False,atracao,,,False
+Museu da Escravatura,-8.8369,13.2344,True,atracao,mobilidade,,,
+Serra da Leba,-14.95,13.35,True,atracao,mobilidade,,,
+Museu do Amanhã - RJ,-22.911,-43.2054,True,atracao,"mobilidade|visual",Rio de Janeiro,Cultura,True
+Hotel Acessível - SP,-23.5505,-46.6333,True,hospedagem,mobilidade,São Paulo,Hospedagem,True
+Restaurante Inclusivo - BH,-19.9227,-43.9451,True,restaurante,"mobilidade|visual|auditiva",Belo Horizonte,Gastronomia,True
+Parque Barigui - PR,-25.4296,-49.2719,True,atracao,mobilidade,Curitiba,Lazer,False
+Praia Acessível - CE,-3.7315,-38.5027,True,atracao,"mobilidade|visual",Fortaleza,Lazer,False

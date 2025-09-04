@@ -11,7 +11,7 @@ class TestRoutes(unittest.TestCase):
         self.assertIn(b'Turismo Acess', resp.data)
 
     def test_mapa_folium(self):
-        resp = self.client.get('/mapa_folium')
+        resp = self.client.get('/mapa')
         self.assertEqual(resp.status_code, 200)
         self.assertIn(b'Mapa de Acessibilidade', resp.data)
 
