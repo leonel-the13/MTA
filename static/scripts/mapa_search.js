@@ -1,5 +1,3 @@
-// Script para autocomplete e busca de atrações
-// Busca sugestões da API e centraliza o mapa ao selecionar
 
 document.addEventListener("DOMContentLoaded", function () {
   const input = document.getElementById("search-input");

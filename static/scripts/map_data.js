@@ -1,5 +1,3 @@
-// Dados de exemplo para visualização dos filtros no mapa
-// Cada objeto representa um ponto de interesse
 const MAP_DATA = [
   {
     nome: "Museu do Amanhã - RJ",

@@ -10,7 +10,6 @@ DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data')
 
 
 
-# Configuração de logging colorido
 class AnsiColor:
     CYAN = '\033[96m'
     GREEN = '\033[92m'
@@ -33,7 +32,6 @@ app = Flask(
 DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
 
 
-# Rota para servir arquivos da pasta data (gráficos, csvs, etc)
 @app.route('/data/<path:filename>')
 def data_files(filename):
     return send_from_directory(DATA_DIR, filename)

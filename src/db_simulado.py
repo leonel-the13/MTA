@@ -1,4 +1,3 @@
-# Banco de dados simulado em memória para testes rápidos
 import pandas as pd
 import os
 
@@ -13,7 +12,6 @@ def get_visitantes():
 def get_reservas():
     return pd.read_csv(os.path.join(data_dir, 'reservas.csv'), delimiter=',')
 
-# Exemplos de uso
 if __name__ == "__main__":
     print('Atrações:')
     print(get_atracoes().head())

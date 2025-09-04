@@ -1,8 +1,4 @@
-// Script para filtros dinâmicos do mapa Folium
-// Envia para a rota /mapa com os parâmetros de filtro
-
 document.addEventListener("DOMContentLoaded", function () {
-  // Função para obter parâmetros da URL
   function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     const value = urlParams.get(param);
@@ -10,14 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
     return value.split(",");
   }
 
-  // Aplica classe de ativo nos filtros conforme a URL
   function highlightActiveFilters() {
     const tipos = getQueryParam("tipo");
     const acesses = getQueryParam("acess");
     document.querySelectorAll(".filter-btn").forEach(function (btn) {
       btn.classList.remove("bg-blue-600", "text-white");
       btn.classList.add("bg-white", "text-gray-700");
-      // Filtro tipo
       if (
         tipos.length &&
         btn.textContent.includes("Hospedagens") &&
@@ -50,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.classList.add("bg-blue-600", "text-white");
         btn.classList.remove("bg-white", "text-gray-700");
       }
-      // Filtro acessibilidade
       if (
         acesses.length &&
         btn.textContent.includes("Mobilidade") &&
@@ -83,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.classList.add("bg-blue-600", "text-white");
         btn.classList.remove("bg-white", "text-gray-700");
       }
-      // Todos
       if (
         !tipos.length &&
         !acesses.length &&
@@ -97,7 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   highlightActiveFilters();
 
-  // Lógica de seleção única por linha
   const tipoBtns = Array.from(document.querySelectorAll(".filter-btn")).filter(
     (btn) =>
       ["Hospedagens", "Restaurantes", "Atrações", "Transportes"].some((t) =>
@@ -157,8 +148,6 @@ document.addEventListener("DOMContentLoaded", function () {
       updateUrl();
     });
   });
-
-  // Botão Todos
   document.querySelectorAll(".filter-btn").forEach(function (btn) {
     if (btn.textContent.includes("Todos")) {
       btn.addEventListener("click", function (e) {

@@ -1,4 +1,3 @@
-// Move o conteúdo do mapa Folium para o div correto
 document.addEventListener("DOMContentLoaded", function () {
   var foliumHolder = document.getElementById("folium-map-holder");
   var foliumMapDiv = document.getElementById("folium-map");
@@ -9,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     foliumHolder.remove();
   }
-  // Corrige links dos popups do Folium para não navegarem
   setTimeout(function () {
     var iframes = document.querySelectorAll("#folium-map iframe");
     iframes.forEach(function (iframe) {

@@ -22,7 +22,6 @@
     </style>
   </head>
   <body class="bg-gray-50 font-sans">
-    <!-- Navbar -->
     <nav class="gradient-bg text-white shadow-lg">
       <div
         class="container mx-auto px-4 py-4 flex justify-between items-center"
@@ -44,7 +43,6 @@
           <i data-feather="menu" class="w-6 h-6"></i>
         </button>
       </div>
-      <!-- Mobile Menu -->
       <div class="md:hidden hidden px-4 pb-4" id="mobile-menu">
         <a href="/" class="block py-2 hover:text-blue-200">Início</a>
         <a href="/mapa" class="block py-2 hover:text-blue-200">Mapa</a>
@@ -53,8 +51,6 @@
         <a href="/contato" class="block py-2 hover:text-blue-200">Contato</a>
       </div>
     </nav>
-
-    <!-- Hero Section -->
     <section class="gradient-bg text-white py-20">
       <div
         class="container mx-auto px-4 flex flex-col md:flex-row items-center"
@@ -92,8 +88,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Accessibility Features -->
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">
@@ -167,8 +161,6 @@
         </div>
       </div>
     </section>
-
-    <!-- How It Works -->
     <section id="como-funciona" class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">
@@ -244,8 +236,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Popular Destinations -->
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">
@@ -343,8 +333,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Testimonials -->
     <section class="py-16 gradient-bg text-white">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">
@@ -419,8 +407,6 @@
         </div>
       </div>
     </section>
-
-    <!-- CTA Section -->
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold mb-6" data-aos="fade-up">
@@ -454,8 +440,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -528,7 +512,6 @@
     </footer>
 
     <script>
-      // Mobile menu toggle
       document
         .getElementById("menu-btn")
         .addEventListener("click", function () {
@@ -540,15 +523,11 @@
             menu.classList.add("hidden");
           }
         });
-
-      // Initialize AOS animation library
       AOS.init({
         duration: 800,
         easing: "ease-in-out",
         once: true,
       });
-
-      // Replace all feather icons
       feather.replace();
     </script>
   </body>

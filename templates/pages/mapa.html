@@ -9,7 +9,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <!-- Folium map será renderizado pelo backend -->
     <style>
       .gradient-bg {
         background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
@@ -65,7 +64,6 @@
     </style>
   </head>
   <body class="bg-gray-50 font-sans">
-    <!-- Navbar -->
     <nav class="gradient-bg text-white shadow-lg">
       <div
         class="container mx-auto px-4 py-4 flex justify-between items-center"
@@ -87,7 +85,6 @@
           <i data-feather="menu" class="w-6 h-6"></i>
         </button>
       </div>
-      <!-- Mobile Menu -->
       <div class="md:hidden hidden px-4 pb-4" id="mobile-menu">
         <a href="/" class="block py-2 hover:text-blue-200">Início</a>
         <a href="/mapa" class="block py-2 hover:text-blue-200">Mapa</a>
@@ -96,15 +93,11 @@
         <a href="/contato" class="block py-2 hover:text-blue-200">Contato</a>
       </div>
     </nav>
-
-    <!-- Map Search Section -->
     <section class="pt-10 pb-6 bg-white">
       <div class="container mx-auto px-4">
         <h1 class="text-3xl font-bold mb-6 text-center">
           Mapa de Acessibilidade
         </h1>
-
-        <!-- Search Bar -->
         <div class="max-w-3xl mx-auto mb-8" data-aos="fade-up">
           <div class="relative">
             <input
@@ -121,8 +114,6 @@
             </button>
           </div>
         </div>
-
-        <!-- Filters -->
         <div class="mb-8" data-aos="fade-up">
           <h2 class="text-lg font-semibold mb-4 text-gray-700">Filtrar por:</h2>
           <div class="flex flex-wrap gap-4">
@@ -181,8 +172,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Map Container -->
     <section class="py-4 bg-gray-50">
       <div class="container mx-auto px-4">
         <div
@@ -193,8 +182,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Map Legend -->
     <section class="py-8 bg-white">
       <div class="container mx-auto px-4">
         <div class="bg-gray-50 p-6 rounded-lg shadow-inner" data-aos="fade-up">
@@ -246,8 +233,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Featured Places -->
     <section class="py-12 bg-gray-50">
       <div class="container mx-auto px-4">
         <h2 class="text-2xl font-bold text-center mb-8">Locais em Destaque</h2>
@@ -374,8 +359,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -450,7 +433,6 @@
     <script src="/static/scripts/mapa_search.js"></script>
     <script src="/static/scripts/mapa_filters.js"></script>
     <script>
-      // Menu mobile igual ao index
       document
         .getElementById("menu-btn")
         .addEventListener("click", function () {
@@ -462,13 +444,11 @@
             menu.classList.add("hidden");
           }
         });
-      // Inicializa animações AOS
       AOS.init({
         duration: 800,
         easing: "ease-in-out",
         once: true,
       });
-      // Inicializa feather icons
       feather.replace();
     </script>
   </body>

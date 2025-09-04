@@ -1,6 +1,3 @@
-
-
-
 import folium
 from flask import Blueprint, render_template, request
 from markupsafe import Markup
@@ -37,15 +34,11 @@ def mapa():
                         "categoria": row.get("categoria", ""),
                         "destaque": bool(row.get("destaque", False)),
                 })
-
-        # Filtragem correta fora do loop
         dados_filtrados = dados
         if tipos:
                 dados_filtrados = [p for p in dados_filtrados if p['tipo'] in tipos]
         if acesses:
                 dados_filtrados = [p for p in dados_filtrados if any(a in p['acessibilidade'] for a in acesses)]
-
-        # Centralização dinâmica se lat/lng na query
         lat = request.args.get('lat', type=float)
         lng = request.args.get('lng', type=float)
         zoom = request.args.get('zoom', type=int)
