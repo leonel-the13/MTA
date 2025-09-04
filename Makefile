@@ -14,3 +14,6 @@ all: limpeza visualizacao mapa
 
 run:
 	python src/app.py
+
+test:
+	python3 -m unittest discover -s tests

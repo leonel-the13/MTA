@@ -1,101 +1,101 @@
-id_reserva-hotel-cidade-acessivel-noites-hospedes-mes
-1-Hotel Praia Morena-Benguela-False-11-1-10
-2-Hotel Omunga-Benguela-True-2-1-11
-3-Hotel Omunga-Benguela-True-5-2-9
-4-Hotel Terminus-Lobito-True-6-2-12
-5-Hotel Praia Morena-Benguela-False-14-2-12
-6-Hotel Serra da Chela-Lubango-True-11-2-8
-7-Hotel Kapolo-Malanje-False-3-3-4
-8-Hotel Horizonte Novo-Namibe-True-3-1-2
-9-Hotel Alvalade-Luanda-False-14-3-2
-10-Hotel Trópico-Luanda-True-1-3-5
-11-Hotel Praia Morena-Benguela-False-11-4-12
-12-Hotel Terminus-Lobito-True-1-4-4
-13-Hotel Kapolo-Malanje-False-12-1-12
-14-Hotel Ritz-Huambo-True-8-1-12
-15-Hotel Omunga-Benguela-True-8-2-1
-16-Hotel Alvalade-Luanda-False-6-3-2
-17-Hotel Presidente Luanda-Luanda-True-8-3-9
-18-Hotel Terminus-Lobito-True-1-4-10
-19-Hotel Omunga-Benguela-True-6-4-7
-20-Hotel Presidente Luanda-Luanda-True-3-2-8
-21-Hotel Ritz-Huambo-True-3-1-11
-22-Hotel Terminus-Lobito-True-10-2-5
-23-Hotel Terminus-Lobito-True-2-4-11
-24-Hotel Kapolo-Malanje-False-5-4-11
-25-Hotel Alvalade-Luanda-False-10-4-9
-26-Hotel Terminus-Lobito-True-12-3-3
-27-Hotel Alvalade-Luanda-False-6-4-10
-28-Hotel Presidente Luanda-Luanda-True-8-4-11
-29-Hotel Praia Morena-Benguela-False-5-2-1
-30-Hotel Horizonte Novo-Namibe-True-1-4-1
-31-Hotel Omunga-Benguela-True-8-2-1
-32-Hotel Kapolo-Malanje-False-11-1-12
-33-Hotel Kapolo-Malanje-False-2-3-6
-34-Hotel Omunga-Benguela-True-8-3-12
-35-Hotel Ritz-Huambo-True-13-4-2
-36-Hotel Praia Morena-Benguela-False-14-4-10
-37-Hotel Kapolo-Malanje-False-5-3-9
-38-Hotel Praia Morena-Benguela-False-6-3-12
-39-Hotel Alvalade-Luanda-False-8-3-7
-40-Hotel Kapolo-Malanje-False-5-2-9
-41-Hotel Kapolo-Malanje-False-2-3-6
-42-Hotel Presidente Luanda-Luanda-True-13-4-6
-43-Hotel Presidente Luanda-Luanda-True-10-2-10
-44-Hotel Horizonte Novo-Namibe-True-1-4-5
-45-Hotel Presidente Luanda-Luanda-True-3-3-5
-46-Hotel Alvalade-Luanda-False-10-1-6
-47-Hotel Serra da Chela-Lubango-True-9-4-1
-48-Hotel Presidente Luanda-Luanda-True-4-1-8
-49-Hotel Presidente Luanda-Luanda-True-9-2-2
-50-Hotel Ritz-Huambo-True-12-3-5
-51-Hotel Praia Morena-Benguela-False-13-4-6
-52-Hotel Horizonte Novo-Namibe-True-7-4-5
-53-Hotel Alvalade-Luanda-False-4-2-10
-54-Hotel Ritz-Huambo-True-9-3-9
-55-Hotel Horizonte Novo-Namibe-True-5-1-8
-56-Hotel Serra da Chela-Lubango-True-11-4-1
-57-Hotel Serra da Chela-Lubango-True-11-2-5
-58-Hotel Ritz-Huambo-True-11-4-5
-59-Hotel Omunga-Benguela-True-1-4-9
-60-Hotel Praia Morena-Benguela-False-11-3-11
-61-Hotel Horizonte Novo-Namibe-True-13-3-3
-62-Hotel Horizonte Novo-Namibe-True-13-3-9
-63-Hotel Omunga-Benguela-True-9-3-1
-64-Hotel Kapolo-Malanje-False-1-2-1
-65-Hotel Horizonte Novo-Namibe-True-7-2-2
-66-Hotel Ritz-Huambo-True-8-4-3
-67-Hotel Serra da Chela-Lubango-True-13-2-2
-68-Hotel Alvalade-Luanda-False-6-4-10
-69-Hotel Ritz-Huambo-True-5-1-3
-70-Hotel Ritz-Huambo-True-8-1-2
-71-Hotel Kapolo-Malanje-False-2-3-5
-72-Hotel Presidente Luanda-Luanda-True-9-2-10
-73-Hotel Omunga-Benguela-True-14-3-1
-74-Hotel Serra da Chela-Lubango-True-10-3-4
-75-Hotel Serra da Chela-Lubango-True-2-2-9
-76-Hotel Trópico-Luanda-True-11-2-1
-77-Hotel Omunga-Benguela-True-4-3-9
-78-Hotel Omunga-Benguela-True-1-3-12
-79-Hotel Praia Morena-Benguela-False-3-2-8
-80-Hotel Presidente Luanda-Luanda-True-2-2-5
-81-Hotel Alvalade-Luanda-False-12-4-11
-82-Hotel Alvalade-Luanda-False-8-1-7
-83-Hotel Ritz-Huambo-True-7-3-12
-84-Hotel Presidente Luanda-Luanda-True-9-2-6
-85-Hotel Trópico-Luanda-True-3-3-11
-86-Hotel Terminus-Lobito-True-6-3-7
-87-Hotel Serra da Chela-Lubango-True-1-3-4
-88-Hotel Trópico-Luanda-True-9-3-8
-89-Hotel Trópico-Luanda-True-6-4-10
-90-Hotel Terminus-Lobito-True-13-3-8
-91-Hotel Omunga-Benguela-True-8-4-11
-92-Hotel Alvalade-Luanda-False-10-3-10
-93-Hotel Praia Morena-Benguela-False-5-3-2
-94-Hotel Kapolo-Malanje-False-5-2-3
-95-Hotel Omunga-Benguela-True-13-3-6
-96-Hotel Horizonte Novo-Namibe-True-12-1-6
-97-Hotel Ritz-Huambo-True-11-4-11
-98-Hotel Praia Morena-Benguela-False-7-1-10
-99-Hotel Ritz-Huambo-True-7-4-10
-100-Hotel Alvalade-Luanda-False-5-3-4
+id_reserva,hotel,cidade,acessivel,noites,hospedes,mes
+1,Hotel Praia Morena,Benguela,False,11,1,10
+2,Hotel Omunga,Benguela,True,2,1,11
+3,Hotel Omunga,Benguela,True,5,2,9
+4,Hotel Terminus,Lobito,True,6,2,12
+5,Hotel Praia Morena,Benguela,False,14,2,12
+6,Hotel Serra da Chela,Lubango,True,11,2,8
+7,Hotel Kapolo,Malanje,False,3,3,4
+8,Hotel Horizonte Novo,Namibe,True,3,1,2
+9,Hotel Alvalade,Luanda,False,14,3,2
+10,Hotel Trópico,Luanda,True,1,3,5
+11,Hotel Praia Morena,Benguela,False,11,4,12
+12,Hotel Terminus,Lobito,True,1,4,4
+13,Hotel Kapolo,Malanje,False,12,1,12
+14,Hotel Ritz,Huambo,True,8,1,12
+15,Hotel Omunga,Benguela,True,8,2,1
+16,Hotel Alvalade,Luanda,False,6,3,2
+17,Hotel Presidente Luanda,Luanda,True,8,3,9
+18,Hotel Terminus,Lobito,True,1,4,10
+19,Hotel Omunga,Benguela,True,6,4,7
+20,Hotel Presidente Luanda,Luanda,True,3,2,8
+21,Hotel Ritz,Huambo,True,3,1,11
+22,Hotel Terminus,Lobito,True,10,2,5
+23,Hotel Terminus,Lobito,True,2,4,11
+24,Hotel Kapolo,Malanje,False,5,4,11
+25,Hotel Alvalade,Luanda,False,10,4,9
+26,Hotel Terminus,Lobito,True,12,3,3
+27,Hotel Alvalade,Luanda,False,6,4,10
+28,Hotel Presidente Luanda,Luanda,True,8,4,11
+29,Hotel Praia Morena,Benguela,False,5,2,1
+30,Hotel Horizonte Novo,Namibe,True,1,4,1
+31,Hotel Omunga,Benguela,True,8,2,1
+32,Hotel Kapolo,Malanje,False,11,1,12
+33,Hotel Kapolo,Malanje,False,2,3,6
+34,Hotel Omunga,Benguela,True,8,3,12
+35,Hotel Ritz,Huambo,True,13,4,2
+36,Hotel Praia Morena,Benguela,False,14,4,10
+37,Hotel Kapolo,Malanje,False,5,3,9
+38,Hotel Praia Morena,Benguela,False,6,3,12
+39,Hotel Alvalade,Luanda,False,8,3,7
+40,Hotel Kapolo,Malanje,False,5,2,9
+41,Hotel Kapolo,Malanje,False,2,3,6
+42,Hotel Presidente Luanda,Luanda,True,13,4,6
+43,Hotel Presidente Luanda,Luanda,True,10,2,10
+44,Hotel Horizonte Novo,Namibe,True,1,4,5
+45,Hotel Presidente Luanda,Luanda,True,3,3,5
+46,Hotel Alvalade,Luanda,False,10,1,6
+47,Hotel Serra da Chela,Lubango,True,9,4,1
+48,Hotel Presidente Luanda,Luanda,True,4,1,8
+49,Hotel Presidente Luanda,Luanda,True,9,2,2
+50,Hotel Ritz,Huambo,True,12,3,5
+51,Hotel Praia Morena,Benguela,False,13,4,6
+52,Hotel Horizonte Novo,Namibe,True,7,4,5
+53,Hotel Alvalade,Luanda,False,4,2,10
+54,Hotel Ritz,Huambo,True,9,3,9
+55,Hotel Horizonte Novo,Namibe,True,5,1,8
+56,Hotel Serra da Chela,Lubango,True,11,4,1
+57,Hotel Serra da Chela,Lubango,True,11,2,5
+58,Hotel Ritz,Huambo,True,11,4,5
+59,Hotel Omunga,Benguela,True,1,4,9
+60,Hotel Praia Morena,Benguela,False,11,3,11
+61,Hotel Horizonte Novo,Namibe,True,13,3,3
+62,Hotel Horizonte Novo,Namibe,True,13,3,9
+63,Hotel Omunga,Benguela,True,9,3,1
+64,Hotel Kapolo,Malanje,False,1,2,1
+65,Hotel Horizonte Novo,Namibe,True,7,2,2
+66,Hotel Ritz,Huambo,True,8,4,3
+67,Hotel Serra da Chela,Lubango,True,13,2,2
+68,Hotel Alvalade,Luanda,False,6,4,10
+69,Hotel Ritz,Huambo,True,5,1,3
+70,Hotel Ritz,Huambo,True,8,1,2
+71,Hotel Kapolo,Malanje,False,2,3,5
+72,Hotel Presidente Luanda,Luanda,True,9,2,10
+73,Hotel Omunga,Benguela,True,14,3,1
+74,Hotel Serra da Chela,Lubango,True,10,3,4
+75,Hotel Serra da Chela,Lubango,True,2,2,9
+76,Hotel Trópico,Luanda,True,11,2,1
+77,Hotel Omunga,Benguela,True,4,3,9
+78,Hotel Omunga,Benguela,True,1,3,12
+79,Hotel Praia Morena,Benguela,False,3,2,8
+80,Hotel Presidente Luanda,Luanda,True,2,2,5
+81,Hotel Alvalade,Luanda,False,12,4,11
+82,Hotel Alvalade,Luanda,False,8,1,7
+83,Hotel Ritz,Huambo,True,7,3,12
+84,Hotel Presidente Luanda,Luanda,True,9,2,6
+85,Hotel Trópico,Luanda,True,3,3,11
+86,Hotel Terminus,Lobito,True,6,3,7
+87,Hotel Serra da Chela,Lubango,True,1,3,4
+88,Hotel Trópico,Luanda,True,9,3,8
+89,Hotel Trópico,Luanda,True,6,4,10
+90,Hotel Terminus,Lobito,True,13,3,8
+91,Hotel Omunga,Benguela,True,8,4,11
+92,Hotel Alvalade,Luanda,False,10,3,10
+93,Hotel Praia Morena,Benguela,False,5,3,2
+94,Hotel Kapolo,Malanje,False,5,2,3
+95,Hotel Omunga,Benguela,True,13,3,6
+96,Hotel Horizonte Novo,Namibe,True,12,1,6
+97,Hotel Ritz,Huambo,True,11,4,11
+98,Hotel Praia Morena,Benguela,False,7,1,10
+99,Hotel Ritz,Huambo,True,7,4,10
+100,Hotel Alvalade,Luanda,False,5,3,4

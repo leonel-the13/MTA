@@ -1,101 +1,101 @@
-id_visitante-nome-atracao-mes
-1-Sandra-Praia Morena-3
-2-Paulo-Fortaleza de São Miguel-4
-3-Ricardo-Serra da Leba-7
-4-José-Miradouro da Lua-2
-5-Helena-Serra da Leba-1
-6-Pedro-Miradouro da Lua-10
-7-Sofia-Parque Nacional da Kissama-1
-8-Domingos-Parque Nacional da Kissama-2
-9-Carlos-Praia Morena-5
-10-Luísa-Praia Morena-5
-11-Helena-Museu da Escravatura-1
-12-Luísa-Serra da Leba-4
-13-Paulo-Fortaleza de São Miguel-6
-14-Maria-Fortaleza de São Miguel-9
-15-Carlos-Baía Azul-1
-16-Clara-Praia Morena-11
-17-Ricardo-Tundavala-3
-18-João-Parque Nacional da Kissama-7
-19-Sandra-Cachoeira do Binga-11
-20-Domingos-Tundavala-5
-21-Luísa-Tundavala-8
-22-José-Baía Azul-8
-23-António-Parque Nacional da Kissama-9
-24-Isabel-Praia Morena-2
-25-José-Cachoeira do Binga-6
-26-Teresa-Miradouro da Lua-9
-27-Isabel-Tundavala-4
-28-Carlos-Baía Azul-10
-29-Luísa-Serra da Leba-3
-30-Carlos-Cachoeira do Binga-4
-31-Paulo-Serra da Leba-8
-32-Pedro-Tundavala-4
-33-Paulo-Tundavala-12
-34-Paulo-Fortaleza de São Miguel-11
-35-Carlos-Parque Nacional da Kissama-4
-36-José-Miradouro da Lua-6
-37-Manuel-Tundavala-12
-38-Manuel-Serra da Leba-2
-39-Ana-Cachoeira do Binga-2
-40-Sofia-Parque Nacional da Kissama-8
-41-Paulo-Fortaleza de São Miguel-5
-42-Miguel-Cachoeira do Binga-4
-43-Luísa-Tundavala-9
-44-Paulo-Parque Nacional da Kissama-5
-45-Domingos-Miradouro da Lua-10
-46-Manuel-Museu da Escravatura-5
-47-Sandra-Museu da Escravatura-7
-48-José-Tundavala-9
-49-Ricardo-Serra da Leba-11
-50-Isabel-Pedras Negras de Pungo Andongo-12
-51-José-Pedras Negras de Pungo Andongo-10
-52-Pedro-Museu da Escravatura-8
-53-José-Cachoeira do Binga-2
-54-Pedro-Pedras Negras de Pungo Andongo-6
-55-José-Praia Morena-6
-56-Maria-Praia Morena-10
-57-Carlos-Praia Morena-12
-58-Pedro-Tundavala-8
-59-Teresa-Fortaleza de São Miguel-4
-60-Clara-Museu da Escravatura-12
-61-Ricardo-Cachoeira do Binga-11
-62-Pedro-Cachoeira do Binga-4
-63-Pedro-Baía Azul-12
-64-Domingos-Museu da Escravatura-8
-65-João-Parque Nacional da Kissama-6
-66-Domingos-Museu da Escravatura-10
-67-Maria-Baía Azul-2
-68-Inês-Serra da Leba-12
-69-Maria-Parque Nacional da Kissama-4
-70-Domingos-Cachoeira do Binga-8
-71-Maria-Baía Azul-2
-72-Isabel-Praia Morena-11
-73-Manuel-Baía Azul-1
-74-Carlos-Cachoeira do Binga-4
-75-José-Pedras Negras de Pungo Andongo-7
-76-Carlos-Fortaleza de São Miguel-8
-77-António-Tundavala-6
-78-Teresa-Museu da Escravatura-10
-79-João-Pedras Negras de Pungo Andongo-9
-80-António-Parque Nacional da Kissama-4
-81-Sofia-Fortaleza de São Miguel-8
-82-Miguel-Museu da Escravatura-6
-83-Pedro-Pedras Negras de Pungo Andongo-6
-84-Domingos-Miradouro da Lua-9
-85-Helena-Fortaleza de São Miguel-1
-86-Pedro-Parque Nacional da Kissama-12
-87-Helena-Baía Azul-5
-88-Ana-Pedras Negras de Pungo Andongo-2
-89-Maria-Praia Morena-8
-90-Luísa-Cachoeira do Binga-11
-91-Paulo-Fortaleza de São Miguel-9
-92-Isabel-Tundavala-6
-93-Ricardo-Miradouro da Lua-4
-94-Isabel-Cachoeira do Binga-8
-95-Luísa-Pedras Negras de Pungo Andongo-6
-96-Sofia-Tundavala-4
-97-Inês-Fortaleza de São Miguel-6
-98-Teresa-Fortaleza de São Miguel-4
-99-Sandra-Serra da Leba-2
-100-Paulo-Fortaleza de São Miguel-6
+id_visitante,nome,atracao,mes
+1,Sandra,Praia Morena,3
+2,Paulo,Fortaleza de São Miguel,4
+3,Ricardo,Serra da Leba,7
+4,José,Miradouro da Lua,2
+5,Helena,Serra da Leba,1
+6,Pedro,Miradouro da Lua,10
+7,Sofia,Parque Nacional da Kissama,1
+8,Domingos,Parque Nacional da Kissama,2
+9,Carlos,Praia Morena,5
+10,Luísa,Praia Morena,5
+11,Helena,Museu da Escravatura,1
+12,Luísa,Serra da Leba,4
+13,Paulo,Fortaleza de São Miguel,6
+14,Maria,Fortaleza de São Miguel,9
+15,Carlos,Baía Azul,1
+16,Clara,Praia Morena,11
+17,Ricardo,Tundavala,3
+18,João,Parque Nacional da Kissama,7
+19,Sandra,Cachoeira do Binga,11
+20,Domingos,Tundavala,5
+21,Luísa,Tundavala,8
+22,José,Baía Azul,8
+23,António,Parque Nacional da Kissama,9
+24,Isabel,Praia Morena,2
+25,José,Cachoeira do Binga,6
+26,Teresa,Miradouro da Lua,9
+27,Isabel,Tundavala,4
+28,Carlos,Baía Azul,10
+29,Luísa,Serra da Leba,3
+30,Carlos,Cachoeira do Binga,4
+31,Paulo,Serra da Leba,8
+32,Pedro,Tundavala,4
+33,Paulo,Tundavala,12
+34,Paulo,Fortaleza de São Miguel,11
+35,Carlos,Parque Nacional da Kissama,4
+36,José,Miradouro da Lua,6
+37,Manuel,Tundavala,12
+38,Manuel,Serra da Leba,2
+39,Ana,Cachoeira do Binga,2
+40,Sofia,Parque Nacional da Kissama,8
+41,Paulo,Fortaleza de São Miguel,5
+42,Miguel,Cachoeira do Binga,4
+43,Luísa,Tundavala,9
+44,Paulo,Parque Nacional da Kissama,5
+45,Domingos,Miradouro da Lua,10
+46,Manuel,Museu da Escravatura,5
+47,Sandra,Museu da Escravatura,7
+48,José,Tundavala,9
+49,Ricardo,Serra da Leba,11
+50,Isabel,Pedras Negras de Pungo Andongo,12
+51,José,Pedras Negras de Pungo Andongo,10
+52,Pedro,Museu da Escravatura,8
+53,José,Cachoeira do Binga,2
+54,Pedro,Pedras Negras de Pungo Andongo,6
+55,José,Praia Morena,6
+56,Maria,Praia Morena,10
+57,Carlos,Praia Morena,12
+58,Pedro,Tundavala,8
+59,Teresa,Fortaleza de São Miguel,4
+60,Clara,Museu da Escravatura,12
+61,Ricardo,Cachoeira do Binga,11
+62,Pedro,Cachoeira do Binga,4
+63,Pedro,Baía Azul,12
+64,Domingos,Museu da Escravatura,8
+65,João,Parque Nacional da Kissama,6
+66,Domingos,Museu da Escravatura,10
+67,Maria,Baía Azul,2
+68,Inês,Serra da Leba,12
+69,Maria,Parque Nacional da Kissama,4
+70,Domingos,Cachoeira do Binga,8
+71,Maria,Baía Azul,2
+72,Isabel,Praia Morena,11
+73,Manuel,Baía Azul,1
+74,Carlos,Cachoeira do Binga,4
+75,José,Pedras Negras de Pungo Andongo,7
+76,Carlos,Fortaleza de São Miguel,8
+77,António,Tundavala,6
+78,Teresa,Museu da Escravatura,10
+79,João,Pedras Negras de Pungo Andongo,9
+80,António,Parque Nacional da Kissama,4
+81,Sofia,Fortaleza de São Miguel,8
+82,Miguel,Museu da Escravatura,6
+83,Pedro,Pedras Negras de Pungo Andongo,6
+84,Domingos,Miradouro da Lua,9
+85,Helena,Fortaleza de São Miguel,1
+86,Pedro,Parque Nacional da Kissama,12
+87,Helena,Baía Azul,5
+88,Ana,Pedras Negras de Pungo Andongo,2
+89,Maria,Praia Morena,8
+90,Luísa,Cachoeira do Binga,11
+91,Paulo,Fortaleza de São Miguel,9
+92,Isabel,Tundavala,6
+93,Ricardo,Miradouro da Lua,4
+94,Isabel,Cachoeira do Binga,8
+95,Luísa,Pedras Negras de Pungo Andongo,6
+96,Sofia,Tundavala,4
+97,Inês,Fortaleza de São Miguel,6
+98,Teresa,Fortaleza de São Miguel,4
+99,Sandra,Serra da Leba,2
+100,Paulo,Fortaleza de São Miguel,6

@@ -5,16 +5,16 @@ import os
 data_dir = os.path.join(os.path.dirname(__file__), '..', 'data')
 
 # Carregar dados reais
-atracoes = pd.read_csv(os.path.join(data_dir, 'atracoes.csv'), delimiter='-')
-visitantes = pd.read_csv(os.path.join(data_dir, 'visitantes.csv'), delimiter='-')
-reservas = pd.read_csv(os.path.join(data_dir, 'reservas.csv'), delimiter='-')
+atracoes = pd.read_csv(os.path.join(data_dir, 'atracoes.csv'), delimiter=',')
+visitantes = pd.read_csv(os.path.join(data_dir, 'visitantes.csv'), delimiter=',')
+reservas = pd.read_csv(os.path.join(data_dir, 'reservas.csv'), delimiter=',')
 
 # KPI 1: Total de atrações acessíveis
-kpi_acessiveis = (atracoes['acessivel'] == 'True').sum()
+kpi_acessiveis = atracoes['acessivel'].astype(str).str.strip().str.lower().eq('true').sum()
 print(f"Atrações totalmente acessíveis: {kpi_acessiveis}")
 
 # KPI 2: Total de reservas em hotéis acessíveis
-kpi_reservas_acessiveis = (reservas['acessivel'] == 'True').sum()
+kpi_reservas_acessiveis = reservas['acessivel'].astype(str).str.strip().str.lower().eq('true').sum()
 print(f"Reservas em hotéis acessíveis: {kpi_reservas_acessiveis}")
 
 # Gráfico de barras: Acessibilidade das atrações

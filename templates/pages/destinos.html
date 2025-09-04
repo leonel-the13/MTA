@@ -68,32 +68,121 @@
         });
       feather.replace();
     </script>
-    <section class="gradient-bg text-white py-20">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6 text-center w-full">
+    <section class="gradient-bg text-white py-20" data-aos="fade-down">
+      <h1
+        class="text-4xl md:text-5xl font-bold mb-6 text-center w-full"
+        data-aos="zoom-in"
+      >
         Destinos Populares
       </h1>
     </section>
-    <section class="py-12 bg-gray-50">
-      <p>Confira alguns dos destinos mais acessíveis e visitados de Angola!</p>
-      <ul>
+    <section class="py-12 bg-gray-50 px-4 md:px-16" data-aos="fade-up">
+      <p class="mb-4">
+        Confira alguns dos destinos mais acessíveis e visitados de Angola!
+      </p>
+      <ul class="list-disc list-inside mb-6">
         <li>Miradouro da Lua</li>
         <li>Fortaleza de São Miguel</li>
         <li>Parque Nacional da Kissama</li>
         <li>Museu da Escravatura</li>
         <li>Serra da Leba</li>
       </ul>
-      <hr />
-      <h2>KPIs e Gráficos</h2>
-      <img
-        src="/data/grafico_acessibilidade.png"
-        alt="Gráfico de Acessibilidade"
-        style="max-width: 100%; margin-bottom: 1em"
-      />
-      <img
-        src="/data/grafico_mais_visitadas.png"
-        alt="Gráfico de Atrações Mais Visitadas"
-        style="max-width: 100%"
-      />
+      <hr class="my-6" />
+      <h2 class="text-2xl font-semibold mb-4" data-aos="fade-right">
+        KPIs e Gráficos
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div
+          class="bg-white rounded-lg shadow p-6 flex flex-col items-center justify-center"
+          id="kpi-total-atracoes"
+          data-aos="fade-up"
+        >
+          <span class="text-4xl font-bold text-indigo-600" id="kpiTotalAtracoes"
+            >...</span
+          >
+          <span class="text-gray-700 mt-2">Total de atrações</span>
+        </div>
+        <div
+          class="bg-white rounded-lg shadow p-6 flex flex-col items-center justify-center"
+          id="kpi-acessiveis"
+          data-aos="fade-up"
+          data-aos-delay="50"
+        >
+          <span class="text-4xl font-bold text-green-600" id="kpiAcessiveis"
+            >...</span
+          >
+          <span class="text-gray-700 mt-2">Atrações totalmente acessíveis</span>
+        </div>
+        <div
+          class="bg-white rounded-lg shadow p-6 flex flex-col items-center justify-center"
+          id="kpi-total-reservas"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <span class="text-4xl font-bold text-blue-600" id="kpiTotalReservas"
+            >...</span
+          >
+          <span class="text-gray-700 mt-2">Total de reservas</span>
+        </div>
+        <div
+          class="bg-white rounded-lg shadow p-6 flex flex-col items-center justify-center"
+          id="kpi-reservas"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
+          <span class="text-4xl font-bold text-cyan-600" id="kpiReservas"
+            >...</span
+          >
+          <span class="text-gray-700 mt-2">Reservas em hotéis acessíveis</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <img
+          src="/data/grafico_acessibilidade.png"
+          alt="Gráfico de Acessibilidade"
+          class="rounded shadow-lg w-full"
+          style="max-width: 100%; margin-bottom: 1em"
+          data-aos="flip-left"
+        />
+        <img
+          src="/data/grafico_mais_visitadas.png"
+          alt="Gráfico de Atrações Mais Visitadas"
+          class="rounded shadow-lg w-full"
+          style="max-width: 100%"
+          data-aos="flip-right"
+        />
+      </div>
     </section>
+    <script>
+      AOS.init({
+        duration: 900,
+        once: true,
+      });
+      // Buscar KPIs da API e exibir
+      fetch("/api/atracoes")
+        .then((res) => res.json())
+        .then((data) => {
+          document.getElementById("kpiTotalAtracoes").textContent = data.length;
+          const totalAcessiveis = data.filter(
+            (d) => String(d.acessibilidade).trim().toLowerCase() === "true"
+          ).length;
+          document.getElementById("kpiAcessiveis").textContent =
+            totalAcessiveis;
+        });
+      fetch("/data/reservas.csv")
+        .then((res) => res.text())
+        .then((text) => {
+          const linhas = text
+            .split("\n")
+            .slice(1)
+            .filter((l) => l);
+          document.getElementById("kpiTotalReservas").textContent =
+            linhas.length;
+          const total = linhas.filter(
+            (l) => l.split(",")[3].trim().toLowerCase() === "true"
+          ).length;
+          document.getElementById("kpiReservas").textContent = total;
+        });
+    </script>
   </body>
 </html>

@@ -1,3 +1,21 @@
+## Testes Automatizados
+
+O projeto possui testes automatizados para backend, scripts de dados e visualização.
+
+Para rodar todos os testes:
+
+```bash
+make test
+```
+
+Os testes cobrem:
+
+- Backend Flask (rotas principais)
+- Banco simulado (db_simulado)
+- Limpeza de dados (src/limpeza.py)
+- Visualização/gráficos (src/visualizacao.py)
+- Geração de mapa (src/mapa.py)
+
 # Mapa de Turismo Acessível
 
 ## Descrição do Projeto

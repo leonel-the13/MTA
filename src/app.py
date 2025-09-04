@@ -1,8 +1,23 @@
+import logging
+import sys
 from flask import Flask, render_template, jsonify
 import os
 
 from db_simulado import get_atracoes, get_visitantes, get_reservas
 from mapa_folium import mapa_bp
+# Configuração de logging colorido
+class AnsiColor:
+    CYAN = '\033[96m'
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
+    RESET = '\033[0m'
+
+logging.basicConfig(
+    level=logging.INFO,
+    format=f'{AnsiColor.CYAN}[%(asctime)s]{AnsiColor.RESET} %(message)s',
+    stream=sys.stdout
+)
 
 app = Flask(
     __name__,
@@ -12,6 +27,7 @@ app = Flask(
 
 @app.route('/')
 def index():
+    logging.info(f'{AnsiColor.GREEN}Página inicial acessada{AnsiColor.RESET}')
     return render_template('index.html')
 
 from flask import redirect, url_for
@@ -30,33 +46,22 @@ def contato():
 
 @app.route('/destinos')
 def destinos():
+    logging.info(f'{AnsiColor.YELLOW}Página de destinos acessada{AnsiColor.RESET}')
     return render_template('pages/destinos.html')
 
 @app.route('/api/atracoes')
 def api_atracoes():
+    logging.info(f'{AnsiColor.CYAN}API /api/atracoes chamada{AnsiColor.RESET}')
     dados = get_atracoes()
-    # Renomear colunas para frontend
+    # Renomear colunas para frontend (mantendo apenas dados reais do CSV)
     dados = dados.rename(columns={
         'nome': 'nome',
         'latitude': 'latitude',
         'longitude': 'longitude',
         'acessivel': 'acessibilidade'
     })
-    # Adicionar campos fictícios para cidade, endereco e tipo
-    cidades = [
-        "Luanda", "Benguela", "Huíla", "Malanje", "Namibe", "Huambo", "Cuanza Sul", "Bengo", "Zaire", "Cuando Cubango"
-    ]
-    tipos = [
-        "Praia", "Museu", "Parque", "Miradouro", "Cachoeira", "Monumento", "Serra"
-    ]
-    enderecos = [
-        "Centro", "Zona Turística", "Avenida Principal", "Bairro Antigo", "Marginal", "Próximo ao Rio", "Estrada Nacional"
-    ]
-    import random
-    dados["cidade"] = [random.choice(cidades) for _ in range(len(dados))]
-    dados["tipo"] = [random.choice(tipos) for _ in range(len(dados))]
-    dados["endereco"] = [random.choice(enderecos) for _ in range(len(dados))]
-    return jsonify(dados.to_dict(orient='records'))
+    logging.info(f'{AnsiColor.GREEN}API retornou {len(dados)} atrações{AnsiColor.RESET}')
+    return jsonify(dados.to_dict(orient="records"))
 
 @app.route('/api/visitantes')
 def api_visitantes():

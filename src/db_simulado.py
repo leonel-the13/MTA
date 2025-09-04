@@ -8,10 +8,10 @@ def get_atracoes():
     return pd.read_csv(os.path.join(data_dir, 'atracoes.csv'), delimiter=',')
 
 def get_visitantes():
-    return pd.read_csv(os.path.join(data_dir, 'visitantes.csv'), delimiter='-')
+    return pd.read_csv(os.path.join(data_dir, 'visitantes.csv'), delimiter=',')
 
 def get_reservas():
-    return pd.read_csv(os.path.join(data_dir, 'reservas.csv'), delimiter='-')
+    return pd.read_csv(os.path.join(data_dir, 'reservas.csv'), delimiter=',')
 
 # Exemplos de uso
 if __name__ == "__main__":
