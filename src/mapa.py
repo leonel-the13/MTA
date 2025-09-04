@@ -38,39 +38,41 @@ def mapa():
                         "destaque": bool(row.get("destaque", False)),
                 })
 
-                if tipos:
-                        dados = [p for p in dados if p['tipo'] in tipos]
-                if acesses:
-                        dados = [p for p in dados if any(a in p['acessibilidade'] for a in acesses)]
+        # Filtragem correta fora do loop
+        dados_filtrados = dados
+        if tipos:
+                dados_filtrados = [p for p in dados_filtrados if p['tipo'] in tipos]
+        if acesses:
+                dados_filtrados = [p for p in dados_filtrados if any(a in p['acessibilidade'] for a in acesses)]
 
-                # Centralização dinâmica se lat/lng na query
-                lat = request.args.get('lat', type=float)
-                lng = request.args.get('lng', type=float)
-                zoom = request.args.get('zoom', type=int)
-                center = [lat, lng] if lat and lng else [-11.5, 14]
-                zoom_start = zoom if zoom else (13 if lat and lng else 5)
-                m = folium.Map(location=center, zoom_start=zoom_start, tiles='OpenStreetMap')
-                tipo_cores = {
-                        "hospedagem": "blue",
-                        "restaurante": "green",
-                        "atracao": "purple",
-                        "transporte": "orange",
-                }
-                for ponto in dados:
-                        cor = tipo_cores.get(ponto["tipo"], "gray")
-                        popup_html = f"""
-                        <div style='min-width:180px'>
-                                <strong>{ponto['nome']}</strong><br/>
-                                <span style='color: {cor}; font-weight: bold;'>Tipo: {ponto['tipo'].capitalize()}</span><br/>
-                                <span style='font-size:12px;'>Acessibilidade: {', '.join(ponto['acessibilidade']) if ponto['acessibilidade'] else 'Não acessível'}</span>
-                        </div>
-                        """
-                        folium.Marker(
-                                [ponto["lat"], ponto["lng"]],
-                                popup=folium.Popup(popup_html, max_width=250),
-                                icon=folium.Icon(color=cor, icon='info-sign')
-                        ).add_to(m)
+        # Centralização dinâmica se lat/lng na query
+        lat = request.args.get('lat', type=float)
+        lng = request.args.get('lng', type=float)
+        zoom = request.args.get('zoom', type=int)
+        center = [lat, lng] if lat and lng else [-11.5, 14]
+        zoom_start = zoom if zoom else (13 if lat and lng else 5)
+        m = folium.Map(location=center, zoom_start=zoom_start, tiles='OpenStreetMap')
+        tipo_cores = {
+                "hospedagem": "blue",
+                "restaurante": "green",
+                "atracao": "purple",
+                "transporte": "orange",
+        }
+        for ponto in dados_filtrados:
+                cor = tipo_cores.get(ponto["tipo"], "gray")
+                popup_html = f"""
+                <div style='min-width:180px'>
+                        <strong>{ponto['nome']}</strong><br/>
+                        <span style='color: {cor}; font-weight: bold;'>Tipo: {ponto['tipo'].capitalize()}</span><br/>
+                        <span style='font-size:12px;'>Acessibilidade: {', '.join(ponto['acessibilidade']) if ponto['acessibilidade'] else 'Não acessível'}</span>
+                </div>
+                """
+                folium.Marker(
+                        [ponto["lat"], ponto["lng"]],
+                        popup=folium.Popup(popup_html, max_width=250),
+                        icon=folium.Icon(color=cor, icon='info-sign')
+                ).add_to(m)
 
-                folium_html = m.get_root().render().replace('<body>', '').replace('</body>', '')
-                folium_map = Markup(folium_html)
-                return render_template('pages/mapa.html', folium_map=folium_map)
+        folium_html = m.get_root().render().replace('<body>', '').replace('</body>', '')
+        folium_map = Markup(folium_html)
+        return render_template('pages/mapa.html', folium_map=folium_map)
