@@ -28,7 +28,7 @@
     </style>
   </head>
   <body class="bg-gray-50 font-sans">
-    <!-- Navbar -->
+    <!-- Navbar (copiada do index.html) -->
     <nav class="gradient-bg text-white shadow-lg">
       <div
         class="container mx-auto px-4 py-4 flex justify-between items-center"
@@ -38,26 +38,44 @@
           <span class="text-xl font-bold">Turismo Acessível</span>
         </div>
         <div class="hidden md:flex space-x-6">
-          <a href="index.html" class="hover:text-blue-200 transition">Início</a>
-          <a href="#" class="text-blue-200 font-semibold">Mapa</a>
-          <a href="destinos.html" class="hover:text-blue-200 transition"
+          <a href="/" class="hover:text-blue-200 transition">Início</a>
+          <a href="/mapa_folium" class="hover:text-blue-200 transition">Mapa</a>
+          <a href="/destinos" class="hover:text-blue-200 transition"
             >Destinos</a
           >
-          <a href="sobre.html" class="hover:text-blue-200 transition"
-            >Sobre Nós</a
-          >
-          <a href="contato.html" class="hover:text-blue-200 transition"
-            >Contato</a
-          >
+          <a href="/sobre" class="hover:text-blue-200 transition">Sobre Nós</a>
+          <a href="/contato" class="hover:text-blue-200 transition">Contato</a>
         </div>
         <button class="md:hidden" id="menu-btn">
           <i data-feather="menu" class="w-6 h-6"></i>
         </button>
       </div>
+      <!-- Mobile Menu -->
+      <div class="md:hidden hidden px-4 pb-4" id="mobile-menu">
+        <a href="/" class="block py-2 hover:text-blue-200">Início</a>
+        <a href="/mapa_folium" class="block py-2 hover:text-blue-200">Mapa</a>
+        <a href="/destinos" class="block py-2 hover:text-blue-200">Destinos</a>
+        <a href="/sobre" class="block py-2 hover:text-blue-200">Sobre Nós</a>
+        <a href="/contato" class="block py-2 hover:text-blue-200">Contato</a>
+      </div>
     </nav>
+    <script>
+      document
+        .getElementById("menu-btn")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu");
+          if (menu.classList.contains("hidden")) {
+            menu.classList.remove("hidden");
+            feather.replace();
+          } else {
+            menu.classList.add("hidden");
+          }
+        });
+      feather.replace();
+    </script>
 
     <!-- Map Search Section -->
-    <section class="pt-10 pb-6 bg-white">
+    <section class="py-12 bg-white">
       <div class="container mx-auto px-4">
         <h1 class="text-3xl font-bold mb-6 text-center">
           Mapa de Acessibilidade
@@ -80,35 +98,141 @@
         </div>
         <!-- Map Container -->
         <div id="map" class="rounded-lg shadow-lg mb-8"></div>
-        <!-- Filters -->
+        <!-- Filtros dinâmicos -->
         <div class="flex flex-wrap justify-center gap-4 mb-8">
-          <button
-            class="filter-btn bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700"
-            data-filter="all"
-          >
-            Todos
-          </button>
-          <button
-            class="filter-btn bg-gray-200 text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100"
-            data-filter="acessibilidade"
-          >
-            Acessível
-          </button>
-          <button
-            class="filter-btn bg-gray-200 text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100"
-            data-filter="parcial"
-          >
-            Parcial
-          </button>
-          <button
-            class="filter-btn bg-gray-200 text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100"
-            data-filter="nao"
-          >
-            Não Acessível
-          </button>
+          <label for="filtro-cidade">Cidade:</label>
+          <select id="filtro-cidade" class="border rounded px-2 py-1">
+            <option value="todas">Todas</option>
+          </select>
+          <label for="filtro-acess">Acessibilidade:</label>
+          <select id="filtro-acess" class="border rounded px-2 py-1">
+            <option value="todas">Todas</option>
+            <option value="Sim">Sim</option>
+            <option value="Parcial">Parcial</option>
+            <option value="Não">Não</option>
+          </select>
         </div>
       </div>
     </section>
     <!-- ...restante do HTML do mapa... -->
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("menu-btn")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu");
+          if (menu.classList.contains("hidden")) {
+            menu.classList.remove("hidden");
+            feather.replace();
+          } else {
+            menu.classList.add("hidden");
+          }
+        });
+
+      // Initialize AOS animation library
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+      });
+
+      // Replace all feather icons
+      feather.replace();
+
+      // Google Maps + API Flask integração refinada
+      function getCoords(atracao) {
+        // Coordenadas reais ou aproximadas para exemplos de Angola
+        const coordsMap = {
+          "Fortaleza de São Miguel": { lat: -8.8127, lng: 13.2344 },
+          "Ilha do Mussulo": { lat: -9.0456, lng: 13.1217 },
+          "Miradouro da Lua": { lat: -9.6975, lng: 13.2731 },
+          "Museu Nacional de Antropologia": { lat: -8.8137, lng: 13.2342 },
+          "Parque Nacional da Kissama": { lat: -9.5833, lng: 13.0833 },
+        };
+        return coordsMap[atracao.nome] || { lat: -8.8383, lng: 13.2344 };
+      }
+      function getMarkerColor(acessibilidade) {
+        if (acessibilidade === "Sim")
+          return "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
+        if (acessibilidade === "Parcial")
+          return "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
+        return "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+      }
+      // Filtros dinâmicos
+      let atracoesCache = [];
+      function renderMarkers(map, atracoes) {
+        // Remove todos os marcadores antigos
+        if (window.markers) window.markers.forEach((m) => m.setMap(null));
+        window.markers = [];
+        atracoes.forEach((atracao) => {
+          const coords = getCoords(atracao);
+          const marker = new google.maps.Marker({
+            position: coords,
+            map,
+            title: atracao.nome + " - " + atracao.acessibilidade,
+            icon: getMarkerColor(atracao.acessibilidade),
+          });
+          const info = `<b>${atracao.nome}</b><br>${atracao.endereco}<br>${atracao.cidade}<br>Acessibilidade: <b>${atracao.acessibilidade}</b><br>Tipo: ${atracao.tipo}`;
+          const infowindow = new google.maps.InfoWindow({ content: info });
+          marker.addListener("click", () => infowindow.open(map, marker));
+          window.markers.push(marker);
+        });
+      }
+      function applyFilters(map) {
+        const cidade = document.getElementById("filtro-cidade").value;
+        const acess = document.getElementById("filtro-acess").value;
+        const busca = document
+          .getElementById("search-input")
+          .value.trim()
+          .toLowerCase();
+        let filtradas = atracoesCache;
+        if (cidade !== "todas")
+          filtradas = filtradas.filter((a) => a.cidade === cidade);
+        if (acess !== "todas")
+          filtradas = filtradas.filter((a) => a.acessibilidade === acess);
+        if (busca)
+          filtradas = filtradas.filter((a) =>
+            a.nome.toLowerCase().includes(busca)
+          );
+        renderMarkers(map, filtradas);
+      }
+      function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: -8.8383, lng: 13.2344 },
+          zoom: 7,
+        });
+        fetch("/api/atracoes")
+          .then((response) => response.json())
+          .then((atracoes) => {
+            atracoesCache = atracoes;
+            // Preencher filtros
+            const cidades = Array.from(new Set(atracoes.map((a) => a.cidade)));
+            const filtroCidade = document.getElementById("filtro-cidade");
+            cidades.forEach((c) => {
+              const opt = document.createElement("option");
+              opt.value = c;
+              opt.textContent = c;
+              filtroCidade.appendChild(opt);
+            });
+            // Evento filtros
+            document
+              .getElementById("filtro-cidade")
+              .addEventListener("change", () => applyFilters(map));
+            document
+              .getElementById("filtro-acess")
+              .addEventListener("change", () => applyFilters(map));
+            document
+              .getElementById("search-input")
+              .addEventListener("input", () => applyFilters(map));
+            renderMarkers(map, atracoes);
+          });
+      }
+      window.initMap = initMap;
+    </script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+      async
+      defer
+    ></script>
   </body>
 </html>

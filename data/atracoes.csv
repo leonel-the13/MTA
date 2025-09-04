@@ -1,6 +1,11 @@
-nome,endereco,cidade,acessibilidade,tipo
-Fortaleza de São Miguel,Rua 4 de Fevereiro,Luanda,Sim,Patrimônio Histórico
-Ilha do Mussulo,Ilha do Mussulo,Luanda,Parcial,Praia
-Miradouro da Lua,Via Expressa,Luanda,Não,Ponto Turístico
-Museu Nacional de Antropologia,Rua Friedrich Engels,Luanda,Sim,Museu
-Parque Nacional da Kissama,Estrada da Barra do Kwanza,Bengo,Parcial,Parque Natural
+nome,latitude,longitude,acessivel
+Miradouro da Lua,-9.42,13.18,True
+Fortaleza de São Miguel,-8.812,13.23,True
+Praia Morena,-12.58,13.41,False
+Cachoeira do Binga,-11.35,15.12,False
+Parque Nacional da Kissama,-9.79,13.05,True
+Baía Azul,-12.66,13.43,True
+Tundavala,-14.9333,13.5667,True
+Pedras Negras de Pungo Andongo,-9.74,15.65,False
+Museu da Escravatura,-8.8369,13.2344,True
+Serra da Leba,-14.95,13.35,True
