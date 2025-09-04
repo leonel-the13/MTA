@@ -118,57 +118,6 @@ flowchart TD
     D --> E[Apresentação dos Resultados]
 ```
 
----
-
-## Como Configurar o Projeto
-
-1. **Clone o repositório:**
-
-   ```sh
-   git clone <url-do-repo>
-   cd turismo-acessivel
-   ```
-
-2. **Crie um ambiente virtual:**
-
-   ```sh
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-
-3. **Instale as dependências:**
-
-   ```sh
-   pip install -r requirements.txt
-   ```
-
-4. **Rode todo o projeto com Makefile:**
-
-   ```sh
-   make all
-   ```
-
-   Ou rode scripts individuais:
-
-   ```sh
-   make limpeza
-   make visualizacao
-   make mapa
-   ```
-
-5. **Rodar o backend Flask:**
-
-   ```sh
-   make run
-   ```
-
-   Depois, acesse http://127.0.0.1:5000 no navegador para ver a interface simples.
-
-6. **(Opcional) Rode notebooks no VSCode:**
-   - Abra o arquivo `.ipynb` e execute as células.
-
----
-
 ## Tecnologias Sugeridas para Desenvolvimento Básico
 
 **Backend:**
